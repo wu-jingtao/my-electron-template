@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs-extra');
 const package_json = require('./package.json');
 
 const gulp = require("gulp");
@@ -37,19 +36,16 @@ gulp.task("compile_less", function () {
 
 //打包程序
 gulp.task('package_electron', ['compile_ts', 'compile_less'], function (done) {
-
-    //删除上次打包的，避免发生错误
-    fs.removeSync(path.resolve(__dirname, `./release/${package_json.version}`));
-
     const options = {
         dir: __dirname,
         out: path.resolve(__dirname, `./release/${package_json.version}`),
-        appCopyright: package_json.license,
+        appCopyright: `${package_json.author} - ${package_json.license}`,
         platform: 'win32',
         arch: 'x64',
-        asar: true,
+        asar: false,
+        prune: true,    //在有些版本的npm下肯能会失败
         icon: package_json.icon && path.resolve(__dirname, package_json.icon),
-        ignore: /[/\\]\.vscode|electron_build|release|src[/\\]/,    //打包时忽略 .vscode electron_build release src 目录
+        ignore: '/\\.vscode|electron_build|release|src|gulpfile\\.js($|/)',    //打包时忽略
         download: {
             cache: path.resolve(__dirname, './electron_build'),
             mirror: 'https://npm.taobao.org/mirrors/electron/'
@@ -58,6 +54,6 @@ gulp.task('package_electron', ['compile_ts', 'compile_less'], function (done) {
 
     packager(options, function done_callback(err, appPaths) {
         console.log(err, appPaths);
-        err ? done(err) : done();
+        done();
     });
 });
