@@ -38,7 +38,7 @@
         "gulp-sourcemaps": "^2.4.1",
         "gulp-typescript": "^3.1.5",
         "less-plugin-autoprefix": "^1.5.1",
-        "typescript": "^2.5.2"
+        "typescript": "^2.7.1"
     },
     "dependencies": {
         "classnames": "^2.2.5",
