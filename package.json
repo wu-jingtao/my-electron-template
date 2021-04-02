@@ -18,12 +18,12 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mx601595686/my-electron-template.git"
+        "url": "git+https://github.com/wu-jingtao/my-electron-template.git"
     },
     "bugs": {
-        "url": "https://github.com/mx601595686/my-electron-template/issues"
+        "url": "https://github.com/wu-jingtao/my-electron-template/issues"
     },
-    "homepage": "https://github.com/mx601595686/my-electron-template#readme",
+    "homepage": "https://github.com/wu-jingtao/my-electron-template#readme",
     "devDependencies": {
         "@types/classnames": "^2.2.3",
         "@types/jquery": "^3.2.17",
